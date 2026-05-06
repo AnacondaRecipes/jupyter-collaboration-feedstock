@@ -26,18 +26,21 @@ requirements:
     - jupyter_server_ydoc >=2.3.0,<3
     - jupyterlab >=4.4.0,<5.0.0
 
-tests:
-  - python:
-      imports: jupyter_collaboration
-      pip_check: true
-  - requirements:
-      run:
-        - jupyterlab
-    script:
-      - jupyter server extension list
-      - jupyter labextension list --debug
-      - jupyter labextension list 2>&1 | ${{ grep }} "collaboration-extension.*OK"
-      - jupyter labextension list 2>&1 | ${{ grep }} "docprovider-extension.*OK"
+test:
+  imports: 
+    - jupyter_collaboration
+  requires:
+    - jupyterlab
+    - pip
+  commands:
+    - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - jupyter server extension list
+    - jupyter labextension list --debug
+    - jupyter labextension list 2>&1 | grep -iE "collaboration-extension.*OK"       # [unix]
+    - jupyter labextension list 2>&1 | grep -iE "docprovider-extension.*OK"         # [unix]
+    - jupyter labextension list 2>&1 | findstr /r /i "collaboration-extension.*OK"  # [win]
+    - jupyter labextension list 2>&1 | findstr /r /i "docprovider-extension.*OK"    # [win]
 about:
   summary: JupyterLab/Jupyter Notebook 7+ Real Time Collaboration extension (metapackage)
   license: BSD-3-Clause
