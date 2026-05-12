@@ -1,4 +1,0 @@
-channels:
-  - https://staging.continuum.io/pbp/fs/jupyter-docprovider-feedstock/pr1/ba85fcf
-  - https://staging.continuum.io/pbp/fs/jupyter-collaboration-ui-feedstock/pr1/9a387a0
-  - https://staging.continuum.io/pbp/fs/jupyter_server_ydoc-feedstock/pr9/5edf6bc
