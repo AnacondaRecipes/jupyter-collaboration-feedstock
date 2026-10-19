@@ -1,5 +1,5 @@
 {% set name = "jupyter-collaboration" %}
-{% set version = "4.3.0" %}
+{% set version = "5.0.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace('-','_') }}-{{ version }}.tar.gz
-  sha256: 6ef03664fdda0fddf47d2904db29a659c8ef4d2f307080b89cdef72e7e7b24c9
+  sha256: 788228837b1e778d47c3cb91f2ba2f7bf789c7dcbcf3b38b8080407831686de4
 
 build:
   skip: true  # [py<38]
@@ -21,10 +21,10 @@ requirements:
     - python
   run:
     - python
-    - jupyter-collaboration-ui >=2.3.0,<3
-    - jupyter-docprovider >=2.3.0,<3
-    - jupyter_server_ydoc >=2.3.0,<3
-    - jupyterlab >=4.4.0,<5.0.0
+    - jupyter-collaboration-ui >=3.0.4,<4
+    - jupyter-docprovider >=3.0.4,<4
+    - jupyter_server_ydoc >=3.0.4,<4
+    - jupyterlab >=4.6.0,<5.0.0
 
 test:
   imports: 
